@@ -85,7 +85,7 @@
     </button>
   </div>
 
-  <!-- 删除二次确认 -->
+ <!-- 删除二次确认 -->
 <Transition name="overlay">
   <div class="overlay" v-if="showDeleteConfirm" @click.self="showDeleteConfirm = false">
     <Transition name="dialog">
@@ -371,66 +371,76 @@ onMounted(() => {
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   z-index: 200;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  padding: 0 40px;
 }
 
 .dialog {
   background: #fff;
   width: 100%;
-  border-radius: 20px 20px 0 0;
-  padding: 28px 24px 44px;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .dialog__title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   color: #1d1d1f;
-  margin-bottom: 6px;
+  text-align: center;
+  padding: 20px 20px 4px;
   letter-spacing: -0.3px;
 }
 
 .dialog__desc {
-  font-size: 14px;
+  font-size: 13px;
   color: #86868b;
-  margin-bottom: 24px;
+  text-align: center;
+  padding: 0 20px 20px;
   font-weight: 300;
 }
 
 .dialog__actions {
   display: flex;
-  gap: 10px;
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .btn {
   flex: 1;
   padding: 14px;
-  border-radius: 12px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
   border: none;
   cursor: pointer;
-  transition: all 0.15s ease;
+  background: #fff;
   font-family: inherit;
+  transition: background 0.15s;
 }
 
 .btn--secondary {
-  background: #fff;
   color: #1d1d1f;
-  border: 1px solid rgba(0,0,0,0.08);
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.btn--secondary:active {
+  background: #f5f5f7;
 }
 
 .btn--danger {
-  background: #fff2f2;
   color: #ff3b30;
-  border: 1px solid rgba(255,59,48,0.15);
+  font-weight: 500;
+}
+
+.btn--danger:active {
+  background: #fff2f2;
 }
 
 .overlay-enter-active,
 .overlay-leave-active {
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .overlay-enter-from,
@@ -440,11 +450,12 @@ onMounted(() => {
 
 .dialog-enter-active,
 .dialog-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .dialog-enter-from,
 .dialog-leave-to {
-  transform: translateY(100%);
+  opacity: 0;
+  transform: scale(0.92);
 }
 </style>
