@@ -156,84 +156,89 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* 顶部渐变栏 */
+/* 顶部 */
 .header {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  padding: 48px 20px 0;
-  flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  padding: 52px 24px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .header__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .header__title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.5px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.3px;
 }
 
 .header__badge {
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  background: #f5f5f7;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #86868b;
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 /* Tab */
 .tabs {
   display: flex;
-  gap: 4px;
+  gap: 0;
 }
 
 .tab {
   flex: 1;
-  padding: 10px;
+  padding: 10px 0;
   font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  color: #86868b;
   background: none;
   border: none;
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
+  border-bottom: 1.5px solid transparent;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  letter-spacing: -0.1px;
 }
 
 .tab--active {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #1d1d1f;
+  border-bottom-color: #1d1d1f;
+  font-weight: 500;
 }
 
 .tab__count {
-  background: rgba(255, 255, 255, 0.25);
-  color: #fff;
+  background: #f5f5f7;
+  color: #86868b;
   font-size: 11px;
   padding: 1px 7px;
   border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 /* 内容区 */
 .content {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 16px 80px;
+  padding: 20px 16px 100px;
   -webkit-overflow-scrolling: touch;
 }
 
-/* 下拉刷新指示器 */
+/* 下拉刷新 */
 .refresh-indicator {
   display: flex;
   align-items: center;
@@ -242,7 +247,7 @@ onMounted(() => {
   height: 0;
   overflow: hidden;
   font-size: 13px;
-  color: #8b5cf6;
+  color: #86868b;
   transition: height 0.3s;
 }
 
@@ -256,19 +261,19 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 0;
-  gap: 12px;
+  padding: 80px 0;
+  gap: 8px;
 }
 
 .empty p {
-  font-size: 16px;
-  font-weight: 600;
-  color: #c7d2fe;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1d1d1f;
 }
 
 .empty span {
   font-size: 13px;
-  color: #d1d5db;
+  color: #86868b;
 }
 
 /* 占位 */
@@ -279,7 +284,7 @@ onMounted(() => {
   justify-content: center;
   padding: 80px 0;
   gap: 12px;
-  color: #c7d2fe;
+  color: #86868b;
   font-size: 14px;
 }
 
@@ -291,17 +296,17 @@ onMounted(() => {
   padding: 16px 0;
   min-height: 48px;
   font-size: 13px;
-  color: #d1d5db;
+  color: #86868b;
 }
 
 /* spinner */
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #e0e7ff;
-  border-top-color: #6366f1;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #e5e5ea;
+  border-top-color: #1d1d1f;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.7s linear infinite;
 }
 
 @keyframes spin {
@@ -311,11 +316,11 @@ onMounted(() => {
 /* FAB */
 .fab {
   position: fixed;
-  bottom: 28px;
+  bottom: 32px;
   right: calc(50% - 215px + 20px);
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  width: 48px;
+  height: 48px;
+  background: #1d1d1f;
   border: none;
   border-radius: 50%;
   color: #fff;
@@ -323,12 +328,12 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.45);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .fab:active {
-  transform: scale(0.92);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  transform: scale(0.93);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 </style>

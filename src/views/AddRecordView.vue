@@ -189,81 +189,81 @@ function confirmCancel() {
 <style scoped>
 .add-page {
   min-height: 100vh;
-  background: #f0f2f8;
+  background: #f5f5f7;
   display: flex;
   flex-direction: column;
 }
 
-/* 顶部渐变栏 */
 .header {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  padding: 48px 20px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  padding: 52px 20px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-  flex-shrink: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .header__back {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+  width: 32px;
+  height: 32px;
+  background: #f5f5f7;
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 50%;
-  color: #fff;
+  color: #1d1d1f;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.15s;
 }
 
 .header__back:active {
-  background: rgba(255, 255, 255, 0.35);
+  background: #e5e5ea;
 }
 
 .header__title {
-  font-size: 17px;
-  font-weight: 600;
-  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1d1d1f;
+  letter-spacing: -0.2px;
 }
 
 .header__placeholder {
-  width: 36px;
+  width: 32px;
 }
 
-/* 表单 */
 .form-container {
   padding: 20px 16px 40px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .field {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 14px 16px;
-  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.06);
-  transition: box-shadow 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s;
 }
 
 .field--error {
-  box-shadow: 0 2px 12px rgba(239, 68, 68, 0.15);
+  border-color: #ff3b30;
 }
 
 .field__label {
   display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #6366f1;
-  margin-bottom: 8px;
-  letter-spacing: 0.3px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #86868b;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
 }
 
 .field__required {
-  color: #f87171;
+  color: #ff3b30;
   margin-left: 2px;
 }
 
@@ -273,171 +273,176 @@ function confirmCancel() {
   border: none;
   outline: none;
   font-size: 15px;
-  color: #1e1b4b;
+  color: #1d1d1f;
   background: transparent;
   font-family: inherit;
   resize: none;
+  letter-spacing: -0.2px;
 }
 
 .field__input::placeholder,
 .field__textarea::placeholder {
-  color: #d1d5db;
+  color: #c7c7cc;
+  font-weight: 300;
 }
 
 .field__footer {
   display: flex;
   justify-content: flex-end;
   margin-top: 6px;
-  min-height: 18px;
+  min-height: 16px;
 }
 
 .field__error {
   font-size: 12px;
-  color: #f87171;
+  color: #ff3b30;
   flex: 1;
 }
 
 .field__count {
   font-size: 12px;
-  color: #d1d5db;
+  color: #c7c7cc;
 }
 
-/* 按钮组 */
 .actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-top: 8px;
 }
 
 .btn {
   flex: 1;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 12px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  letter-spacing: -0.2px;
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: #1d1d1f;
   color: #fff;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .btn--primary:active {
-  transform: scale(0.97);
+  background: #3a3a3c;
+  transform: scale(0.98);
 }
 
 .btn--primary:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .btn--secondary {
   background: #fff;
-  color: #6366f1;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+  color: #1d1d1f;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 .btn--secondary:active {
-  background: #f5f3ff;
+  background: #f5f5f7;
 }
 
 .btn--danger {
-  background: #fee2e2;
-  color: #ef4444;
+  background: #fff2f2;
+  color: #ff3b30;
+  border: 1px solid rgba(255,59,48,0.15);
 }
 
 .btn--danger:active {
-  background: #fecaca;
+  background: #ffe5e3;
 }
 
-/* spinner */
 .spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  width: 17px;
+  height: 17px;
+  border: 1.5px solid rgba(255,255,255,0.3);
   border-top-color: #fff;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.7s linear infinite;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* Toast */
 .toast {
   position: fixed;
-  top: 60px;
+  top: 56px;
   left: 50%;
   transform: translateX(-50%);
-  background: #1e1b4b;
+  background: #1d1d1f;
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 24px;
-  font-size: 14px;
+  padding: 9px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   z-index: 100;
+  letter-spacing: -0.1px;
 }
 
 .toast-enter-active,
 .toast-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;
-  transform: translateX(-50%) translateY(-10px);
+  transform: translateX(-50%) translateY(-8px);
 }
 
-/* 弹窗 */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: flex-end;
   z-index: 200;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .dialog {
   background: #fff;
   width: 100%;
-  border-radius: 24px 24px 0 0;
-  padding: 28px 24px 40px;
+  border-radius: 20px 20px 0 0;
+  padding: 28px 24px 44px;
 }
 
 .dialog__title {
   font-size: 17px;
-  font-weight: 700;
-  color: #1e1b4b;
-  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
 }
 
 .dialog__desc {
   font-size: 14px;
-  color: #9ca3af;
+  color: #86868b;
   margin-bottom: 24px;
+  font-weight: 300;
 }
 
 .dialog__actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .overlay-enter-active,
 .overlay-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .overlay-enter-from,

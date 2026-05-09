@@ -75,26 +75,26 @@ async function handleDelete() {
 .card {
   display: flex;
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.08);
-  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 10px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
 .card:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
 .card--deleting {
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(30px);
 }
 
 .card__accent {
-  width: 4px;
-  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  width: 3px;
+  background: #1d1d1f;
   flex-shrink: 0;
 }
 
@@ -109,36 +109,35 @@ async function handleDelete() {
   justify-content: space-between;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .card__title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #1e1b4b;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d1d1f;
   line-height: 1.4;
   flex: 1;
   min-width: 0;
+  letter-spacing: -0.1px;
 }
 
 .card__date {
   font-size: 12px;
-  color: #a5b4fc;
+  color: #86868b;
   flex-shrink: 0;
-  background: #eef2ff;
-  padding: 2px 8px;
-  border-radius: 20px;
 }
 
 .card__detail {
   font-size: 13px;
-  color: #6b7280;
+  color: #86868b;
   line-height: 1.6;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  font-weight: 300;
 }
 
 .card__detail--expanded {
@@ -149,8 +148,8 @@ async function handleDelete() {
 .card__extra {
   margin-top: 10px;
   padding: 10px 12px;
-  background: #f5f3ff;
-  border-radius: 10px;
+  background: #f5f5f7;
+  border-radius: 8px;
 }
 
 .card__extra-item {
@@ -166,15 +165,14 @@ async function handleDelete() {
 
 .card__extra-label {
   font-size: 11px;
-  color: #8b5cf6;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: #86868b;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 .card__extra-value {
   font-size: 13px;
-  color: #4c1d95;
+  color: #1d1d1f;
 }
 
 .card__footer {
@@ -183,12 +181,12 @@ async function handleDelete() {
   align-items: center;
   margin-top: 10px;
   padding-top: 8px;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 
 .card__expand-hint {
   font-size: 12px;
-  color: #a5b4fc;
+  color: #86868b;
 }
 
 .card__delete {
@@ -196,23 +194,23 @@ async function handleDelete() {
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: #f87171;
+  color: #ff3b30;
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px 8px;
-  border-radius: 8px;
-  transition: background 0.2s;
+  border-radius: 6px;
+  transition: background 0.15s;
+  font-family: inherit;
 }
 
 .card__delete:active {
-  background: #fef2f2;
+  background: #fff2f2;
 }
 
-/* 展开动画 */
 .expand-enter-active,
 .expand-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   overflow: hidden;
 }
 
