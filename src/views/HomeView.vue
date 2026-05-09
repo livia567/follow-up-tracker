@@ -376,12 +376,13 @@ onMounted(() => {
   z-index: 200;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  padding: 0 40px;
+  padding: 0 48px;
 }
 
 .dialog {
   background: #fff;
   width: 100%;
+  max-width: 270px;
   border-radius: 16px;
   overflow: hidden;
 }
