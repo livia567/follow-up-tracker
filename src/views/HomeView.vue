@@ -84,6 +84,22 @@
       </svg>
     </button>
   </div>
+
+  <!-- 删除二次确认 -->
+<Transition name="overlay">
+  <div class="overlay" v-if="showDeleteConfirm" @click.self="showDeleteConfirm = false">
+    <Transition name="dialog">
+      <div class="dialog" v-if="showDeleteConfirm">
+        <h3 class="dialog__title">确认删除？</h3>
+        <p class="dialog__desc">删除后不可恢复</p>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" @click="showDeleteConfirm = false">取消</button>
+          <button class="btn btn--danger" @click="confirmDelete">确认删除</button>
+        </div>
+      </div>
+    </Transition>
+  </div>
+</Transition>
 </template>
 
 <script setup>
@@ -96,6 +112,14 @@ const router = useRouter()
 const store = useRecordStore()
 const activeTab = ref('records')
 const scrollContainer = ref(null)
+const showDeleteConfirm = ref(false)
+const deleteTargetId = ref(null)
+
+async function confirmDelete() {
+  await store.remove(deleteTargetId.value)
+  showDeleteConfirm.value = false
+  deleteTargetId.value = null
+}
 
 // 初始加载
 onMounted(() => {
@@ -108,8 +132,13 @@ function goToAdd() {
 }
 
 // 删除记录
-async function handleDelete(id) {
-  await store.remove(id)
+function handleDelete(id) {
+  showConfirmDialog(id)
+}
+
+function showConfirmDialog(id) {
+  deleteTargetId.value = id
+  showDeleteConfirm.value = true
 }
 
 // 滚动处理：到底加载更多
@@ -335,5 +364,87 @@ onMounted(() => {
 .fab:active {
   transform: scale(0.93);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-end;
+  z-index: 200;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.dialog {
+  background: #fff;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  padding: 28px 24px 44px;
+}
+
+.dialog__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.dialog__desc {
+  font-size: 14px;
+  color: #86868b;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.dialog__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.btn--secondary {
+  background: #fff;
+  color: #1d1d1f;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.btn--danger {
+  background: #fff2f2;
+  color: #ff3b30;
+  border: 1px solid rgba(255,59,48,0.15);
+}
+
+.overlay-enter-active,
+.overlay-leave-active {
+  transition: all 0.25s ease;
+}
+
+.overlay-enter-from,
+.overlay-leave-to {
+  opacity: 0;
+}
+
+.dialog-enter-active,
+.dialog-leave-active {
+  transition: all 0.3s ease;
+}
+
+.dialog-enter-from,
+.dialog-leave-to {
+  transform: translateY(100%);
 }
 </style>
